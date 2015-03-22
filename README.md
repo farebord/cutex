@@ -1,0 +1,2 @@
+# cutex
+cute xmonad config
