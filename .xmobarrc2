@@ -1,0 +1,18 @@
+Config 
+    { font = "xft:Envy Code R:pixelsize=15"
+    , bgColor = "#202020"
+    , fgColor = "#909090"
+    , position = Bottom 
+    , border = TopB 
+    , borderColor = "#424242"
+    , lowerOnStart = True
+    , commands = 
+        [ Run MultiCpu ["-t","<total>%"] 10
+        , Run Memory ["-t","<usedratio>%"] 30
+	, Run Wireless "wlp2s0" ["-t", "<essid> <quality>%"] 30
+	, Run CoreTemp ["-t","<core0>C <core1>C"] 50
+        ]
+    , sepChar = "%"
+    , alignSep = "}{"
+    , template = "}{ <fc=#6CB359>CPU</fc> %multicpu% %coretemp% | <fc=#6CB359>MEM</fc> %memory% | <fc=#6CB359>WLAN</fc> %wlp2s0wi% "
+    }
