@@ -1,0 +1,24 @@
+Config 
+    { font = "xft:Envy Code R:pixelsize=15"
+    , bgColor = "#202020"
+    , fgColor = "#909090"
+    , position = Top
+    , border = BottomB 
+    , borderColor = "#424242"
+    , lowerOnStart = True
+    , commands = 
+        [ Run Date "%d/%m/%y %R" "date" 10
+        , Run Com "/home/farebord/.bin/volumeLevel.sh" [] "volume" 10 
+        , Run BatteryP ["BAT1"]
+            ["-t", "<fc=#6CB359><acstatus></fc> <watts>W <timeleft> <fc=yellow><left></fc>%",
+            "-L", "10", "-H", "80", "-p", "3", "-n", "grey90",
+            "--", "-O", "AC", "-o", "BAT",
+            "-L", "-15", "-H", "-5",
+            "-f", "AC/online",
+            "-l", "red", "-m", "lightblue", "-h", "#DE4314"] 50
+        , Run StdinReader
+        ]
+    , sepChar = "%"
+    , alignSep = "}{"
+    , template = "%StdinReader% }{ <fc=#6CB359>DATE</fc> %date% | <fc=#6CB359>VOL</fc> %volume% | %battery% "
+    }
